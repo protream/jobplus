@@ -10,4 +10,7 @@ https://www.shiyanlou.com/louplus/python
 * [幺幺哒](https://github.com/Manchangdx)
 * [水门](https://github.com/Momoka0)
 * [JunLin-He](https://github.com/JunLin-He)
+* [amor0079](https://github.com/amor0079)
+
+
 
