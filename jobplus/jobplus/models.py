@@ -75,7 +75,24 @@ class Company(Base):
     __tablename__ = 'company'
 
     id = db.Column(db.Integer, primary_key=True)
-    # 补充完整
+    logo = db.Column(db.String(256))
+    name = db.Column(db.String(64), nullable=False)
+    # 企业网站
+    website = db.Column(db.String(128), nullable=False)
+    # 地址
+    address = db.Column(db.String(128), nullable=False)
+    # 一句话介绍
+    brief_introduction = db.Column(db.String(128))
+    job_id = db.Column(db.Integer, db.ForeignKey('job.id'))
+    # 招牌职位数量
+    job_num = db.Column(db.Integer, nullable=False)
+    # 企业详细介绍
+    detailed_introduction = db.Column(db.Text)
+    # 在招职位
+    recruit_job = db.relationship('Job')
+
+    def __repr__(self):
+        return '<Company:{}>'.format(slef.name)
 
 
 # 职位表
@@ -83,4 +100,20 @@ class Job(Base):
     __tablename__ = 'job'
 
     id = db.Column(db.Integer, primary_key=True)
-    # 补充完整
+    name = db.Column(db.String(64), nullable=False)
+    # 职位描述
+    describe = db.Column(db.String(256))
+    # 职位要求
+    requirement = db.Column(db.Text, nullable=False)
+    # 薪水范围
+    salary = db.Column(db.String(32), nullable=False)
+    # 经验要求
+    experience_requirement = db.Column(db.String(32), nullable=False)
+    # 面试地点
+    adress = db.Column(db.String(128), nullable=False)
+    company = db.relationship('Company', uselist=False)
+    # 公司信息
+    company_info = db.Column(db.Text)
+
+    def __repr__(self):
+        return '<Job:{}>'.format(self.name)
